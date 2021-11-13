@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import cors from "cors";
 
 import { runSeeder } from "./seeder.js";
 
@@ -12,6 +13,12 @@ dotenv.config();
 const app = express();
 app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    methods: ["GET"],
+  })
+);
 
 app.use("/colleges", collegeRoutes);
 app.use("/students", studentRoutes);
