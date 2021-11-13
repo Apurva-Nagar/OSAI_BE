@@ -23,12 +23,11 @@ export const getCollegeDetails = async (req, res) => {
     if (!college)
       return res.status(404).json({ errors: ["College Not Found"] });
 
-    const { state, country, studentCount, courses } = college;
+    const { state, studentCount, courses } = college;
 
     const similarColleges = await College.find({
       _id: { $ne: id },
       state: state,
-      country: country,
       studentCount: { $gte: studentCount - 100, $lte: studentCount + 100 },
       courses: { $in: courses },
     });

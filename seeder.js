@@ -17,19 +17,17 @@ const seedCollegeDocuments = async () => {
 
   COUNTRIES.forEach((country) => {
     for (let i = 0; i < 50; i++) {
-      const name = `${country} College ${i + 1}`;
+      const name = `${faker.name.findName()} College`;
       const yearFounded = Math.floor(BASE_YEAR + Math.random() * 421);
       const city = `${country} City ${Math.floor(Math.random() * 50)}`;
 
       const state =
         STATES[country][Math.floor(Math.random() * STATES[country].length)];
 
-      const studentCount = Math.floor(
-        BASE_STUDENT_COUNT + Math.random() * 2000
-      );
+      const studentCount = Math.floor(BASE_STUDENT_COUNT + Math.random() * 200);
       const courses = [...COURSES]
         .sort(() => 0.5 - Math.random())
-        .slice(0, Math.floor(3 + Math.random() * 7));
+        .slice(0, Math.floor(3 + Math.random() * 3));
 
       collegeDocuments.push({
         name,
