@@ -82,8 +82,8 @@ const seedStudentDocuments = async (colleges) => {
 };
 
 export const runSeeder = async () => {
-  // await Student.deleteMany({});
-  // await College.deleteMany({});
+  await Student.deleteMany({});
+  await College.deleteMany({});
 
   const colleges = await seedCollegeDocuments();
   await seedStudentDocuments(colleges);
