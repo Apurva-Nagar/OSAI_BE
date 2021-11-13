@@ -2,8 +2,9 @@ import mongoose from "mongoose";
 import College from "../models/college.js";
 
 export const getColleges = async (req, res) => {
+  const { country } = req.query;
   try {
-    const colleges = await College.find({});
+    const colleges = await College.find({ country });
     res.status(200).json(colleges);
   } catch (error) {
     res.status(500).json({ errors: [error.message] });
