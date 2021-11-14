@@ -13,6 +13,7 @@ export const getColleges = async (req, res) => {
 
 export const getCollegeDetails = async (req, res) => {
   const { id } = req.params;
+  const onlySimilar = req.query.onlySimilar === "true";
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).json({ errors: ["Invalid College ID"] });
@@ -33,6 +34,7 @@ export const getCollegeDetails = async (req, res) => {
       courses: { $in: courses },
     });
 
+    if (onlySimilar) return res.status(200).json({ similarColleges });
     res.status(200).json({ college, similarColleges });
   } catch (error) {
     res.status(500).json({ errors: [error.message] });
