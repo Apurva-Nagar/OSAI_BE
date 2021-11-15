@@ -34,5 +34,4 @@ export const SKILLS = [
   "Analytical Thinking",
   "Business Leadership",
   "Data Analysis",
-  "Effective Communication",
 ];
