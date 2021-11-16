@@ -13,12 +13,7 @@ dotenv.config();
 const app = express();
 app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
-app.use(
-  cors({
-    origin: ["https://college-dashboard.vercel.app"],
-    methods: ["GET"],
-  })
-);
+app.use(cors());
 
 app.use("/colleges", collegeRoutes);
 app.use("/students", studentRoutes);
